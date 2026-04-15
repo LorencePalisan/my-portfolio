@@ -5,6 +5,27 @@ document.addEventListener("mousemove", (e) => {
   cursor.style.top = e.clientY + "px";
 });
 
+// Theme Toggle
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "light") {
+  document.body.classList.add("light");
+  themeIcon.classList.replace("fa-sun", "fa-moon");
+}
+
+themeToggle.addEventListener("click", () => {
+  const isLight = document.body.classList.toggle("light");
+  if (isLight) {
+    themeIcon.classList.replace("fa-sun", "fa-moon");
+    localStorage.setItem("theme", "light");
+  } else {
+    themeIcon.classList.replace("fa-moon", "fa-sun");
+    localStorage.setItem("theme", "dark");
+  }
+});
+
 // Carousel Logic
 const carousel = document.getElementById("carousel");
 const nextBtn = document.getElementById("nextBtn");
